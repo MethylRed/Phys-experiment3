@@ -1,0 +1,116 @@
+\documentclass[a4paper,11pt,titlepage]{jsarticle}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+
+\begin{document}
+\noindent\textbf{議論4}\quad
+得られたデータから，光子エネルギー$E$と吸収係数$\alpha d$のグラフは以下のようになった．
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=130mm]{light_absorption_discuss4.png}
+    \caption{吸収スペクトル}
+\end{figure}\\
+このグラフから，遷移エネルギー$E$を求めると，
+\begin{eqnarray*}
+    E_1 = 1.617[eV]\quad , \quad E_2 = 2.026[eV]
+\end{eqnarray*}
+となった．\\
+
+\noindent\textbf{議論5}\quad
+有限の深さの井戸型ポテンシャルの問題を解いてエネルギー固有値を求めたい．そこで以下のような状況を考える．
+\begin{equation}
+    V(z) = \begin{cases}
+        0 & |z|<\frac{L_z}{2} \\ %1
+        V & |z|>\frac{L_z}{2}
+    \end{cases}
+    \quad ,\quad 0<E<V %1
+\end{equation}
+この状況下でSchr\"odinger方程式を解く．$k=\sqrt{2mE/\hbar^2}\,,\,\alpha=\sqrt{2m(V-E)/\hbar^2}$とすると，
+$|z| \to \infty$の極限と，対称性から波動関数は偶関数か奇関数になることより
+\begin{equation}
+    \phi(z) = \begin{cases}
+        A\,e^{\alpha z} & z < -L_z/2 \\
+        B\,coskz & -L_z/2 < z < L_z/2 \\
+        C\,e^{-\alpha z} & L_z/2 <z
+    \end{cases}
+    \quad \rm or \quad \begin{cases}
+        D\,e^{\alpha z} & z < -L_z/2 \\
+        E\,sinkz & -L_z/2 < z < L_z/2 \\
+        F\,e^{-\alpha z} & L_z/2 <z
+    \end{cases}　%2
+\end{equation}
+と解ける．接続条件から，許されるエネルギーの条件は
+\begin{equation}
+    \alpha = k\,tan\,\frac{kL_z}{2} \quad {\rm or} \quad \alpha = -k\,cot\,\frac{kL_z}{2} %3
+\end{equation}
+となる．ここで，$\xi = kL_z/2$，$\eta = \alpha L_z/2$とすると
+\begin{equation}
+    \eta = \xi\,tan\,\xi \quad {\rm or} \quad \eta = -\xi\,cot\,\xi %4
+\end{equation}
+となり，$k^2+\alpha^2 = 2mV/\hbar^2$だから\\
+\begin{equation}
+    \xi^2 + \eta^2 = \frac{mL_z^2V}{2\hbar^2} %5
+\end{equation}
+が得られる．この式に(4)式をそれぞれ代入して，$\xi > 0\,,\,\eta > 0$から
+\begin{equation}
+    \xi=\sqrt{\frac{mL_z^2V}{2\hbar^2}}\,cos\,\xi\quad{\rm or}\quad \xi=\sqrt{\frac{mL_z^2V}{2\hbar^2}}\,sin\,\xi
+\end{equation}　%6
+この方程式を解き，
+\begin{equation}
+    E = \frac{\hbar^2k^2}{2m} = \frac{2\hbar^2}{mL_z^2}\,\xi^2 %7
+\end{equation}
+からエネルギーを求めればよい．(4)式と(5)式を$\xi - \eta$平面上に表したとき，その交点が解に対応する．
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=130mm]{light_absorption_discuss5.png}
+    \caption{エネルギーを図を用いて求める方法}
+\end{figure}\\
+しかしこの方程式は解析的に解けないので，今回はMathematicaを使用し数値解を求めることにしよう．まず，(5)式の右辺，
+すなわち円の半径を求める．(5)式の右辺を$A_e^2,A_h^2$として以下の数値を用いて電子と正孔についてそれぞれ求める．
+\begin{center}
+    電子の質量$m_0=9.109\times 10^{-31}[kg]$\\
+    電子の有効質量$m_e^* = 0.067m_0$\\
+    正孔の有効質量$m_h^* = 0.48m_0$\\
+    GaAsの厚み$L_z = 5.8[nm]$\\
+    $V_e = 0.9564[eV]$\\
+    $V_h = 0.6376[eV]$
+\end{center}
+計算すると，$A_e,A_h$は無次元量となり
+\begin{equation}
+    A_e = 2.635\quad , \quad A_h = 5.579
+\end{equation}
+これを(6)式に代入してMathematicaでFindRoot関数を用いて$\xi$を導出したところ
+\begin{equation}
+    \begin{split}
+        \xi_{e1} = 1.128\quad , \quad \xi_{e2} = 2.172\\
+        \xi_{h1} = 1.366\quad , \quad \xi_{h2} = 2.661
+    \end{split}
+\end{equation}
+となった．これを(7)式に代入して，エネルギー固有値を求めると
+\begin{equation}
+    \begin{split}
+        E_{e1} = 0.1753[eV]\quad , \quad E_{e2} = 0.6500[eV]\\
+        E_{h1} = 0.03434[eV]\quad , \quad E_{h2} = 0.9754[eV]
+    \end{split}
+\end{equation}
+が得られた．ポテンシャル障壁の高さが無限に高いときは光吸収は同じ量子数の状態間でのみ起きる．しかしポテンシャル障壁の高さが
+有限である場合は異なる量子数の状態間でも遷移が観測されるが，この選択則は第1近似としてはよく成り立っているので
+光吸収の起きるエネルギー$E$は，
+GaAsのバンドギャップ$E_g$を用いて
+\begin{equation}
+    E = E_g + E_{en} + E_{hn}
+\end{equation}
+で表せるので，$E_g = 1.424[eV]$であることから
+\begin{equation}
+    E_1 = 1.637[eV]\quad , \quad E_2 = 2.108[eV]
+\end{equation}
+が得られた．\\
+\\
+\noindent ソースコード，PDF：\url{https://github.com/MethylRed/Phys-experiment3}\\
+コピペ厳禁！！！
+
+\end{document}
