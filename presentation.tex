@@ -81,20 +81,20 @@ $|z| \to \infty$の極限と，対称性から波動関数は偶関数か奇関�
 \end{center}
 計算すると，$A_e,A_h$は無次元量となり
 \begin{equation}
-    A_e = 2.635\quad , \quad A_h = 5.579
+    A_e = 3.759\quad , \quad A_h = 8.215
 \end{equation}
 これを(6)式に代入してMathematicaでFindRoot関数を用いて$\xi$を導出したところ
 \begin{equation}
     \begin{split}
-        \xi_{e1} = 1.128\quad , \quad \xi_{e2} = 2.172\\
-        \xi_{h1} = 1.366\quad , \quad \xi_{h2} = 2.661
+        \xi_{e1} = 1.236\quad , \quad \xi_{e2} = 2.436\\
+        \xi_{h1} = 1.400\quad , \quad \xi_{h2} = 2.795
     \end{split}
 \end{equation}
 となった．これを(7)式に代入して，エネルギー固有値を求めると
 \begin{equation}
     \begin{split}
-        E_{e1} = 0.1753[eV]\quad , \quad E_{e2} = 0.6500[eV]\\
-        E_{h1} = 0.03434[eV]\quad , \quad E_{h2} = 0.9754[eV]
+        E_{e1} = 0.1034[eV]\quad , \quad E_{e2} = 0.4018[eV]\\
+        E_{h1} = 0.01851[eV]\quad , \quad E_{h2} = 0.5285[eV]
     \end{split}
 \end{equation}
 が得られた．ポテンシャル障壁の高さが無限に高いときは光吸収は同じ量子数の状態間でのみ起きる．しかしポテンシャル障壁の高さが
@@ -106,11 +106,13 @@ GaAsのバンドギャップ$E_g$を用いて
 \end{equation}
 で表せるので，$E_g = 1.424[eV]$であることから
 \begin{equation}
-    E_1 = 1.637[eV]\quad , \quad E_2 = 2.108[eV]
+    E_1 = 1.546[eV]\quad , \quad E_2 = 1.844[eV]
 \end{equation}
-が得られた．\\
+が得られた．これをデータと比較すると，0.1～0.2[eV]ほどズレていることが分かる．この差は小さいとはみなせない．
+これは，測定の際に室内の様々な光が分光器に入り込んでしまったためであると考えられる．また有限井戸型ポテンシャルの問題を
+解いてエネルギーを求める際に代入した数値を初めから端数処理した状態で扱っているため微妙な差が影響していることも含まれて
+いると考えられる．
 \\
 \noindent ソースコード，PDF：\url{https://github.com/MethylRed/Phys-experiment3}\\
-コピペ厳禁！！！
 
 \end{document}
